@@ -1,14 +1,18 @@
 {
     "version": 2,
-    "routes": [
-      {
-        "src": "/(.*)",
-        "dest": "app.py"
-      }
+    "builds": [
+        {
+            "src": "app.py",
+            "use": "@vercel/python",
+            "config": {
+                "includeFiles": "templates/**, static/**, sqliteproject.db"
+            }
+        }
     ],
-    "functions": {
-      "app.py": {
-        "includeFiles": "templates/**, static/**, sqliteproject.db"
-      }
-    }
-  }
+    "routes": [
+        {
+            "src": "/(.*)",
+            "dest": "app.py"
+        }
+    ]
+}
